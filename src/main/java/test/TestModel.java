@@ -2,12 +2,9 @@ package test;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Observer;
+import test.TestingObserver;
 
 import model.Item;
-import model.ItemSet;
 import model.ItemSetAdapter;
 
 import org.junit.After;
