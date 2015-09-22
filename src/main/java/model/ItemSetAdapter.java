@@ -3,12 +3,17 @@ package model;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ItemSetAdapter extends ItemSet{
+public class ItemSetAdapter extends Observable{
 	
-	private Observable observable = new Observable();
+	private ItemSet itemSet = new ItemSet();
 	
 	public ItemSetAdapter(){
 		super();
+	}
+	
+	public ItemSetAdapter(String title){
+		super();
+		itemSet.setTitle(title);
 	}
 	
 	/**
@@ -16,7 +21,9 @@ public class ItemSetAdapter extends ItemSet{
 	 * @param item : item to add
 	 */
 	public void addItem(Item item){
-		super.addItem(item);
+		itemSet.addItem(item);
+		setChanged();
+		notifyObservers();
 	}
 	
 	/**
@@ -24,16 +31,7 @@ public class ItemSetAdapter extends ItemSet{
 	 * @param item : item to remove
 	 */
 	public void removeItem(Item item){
-		super.removeItem(item);
-		observable.notifyObservers();
-	}
-
-
-	public void addObserver(Observer observer) {
-		observable.addObserver(observer);
-	}
-
-	public void removeObserver(Observer observer) {
-		observable.deleteObserver(observer);
+		itemSet.removeItem(item);
+		notifyObservers();
 	}
 }

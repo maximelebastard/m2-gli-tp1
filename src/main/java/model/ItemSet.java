@@ -20,22 +20,10 @@ public class ItemSet {
 	/**
 	 * @var items Items of the itemset
 	 */
-	private List<Item> items;
+	private List<Item> items = new ArrayList<Item>();
 
 	public ItemSet() {
 		super();
-	}
-	
-	public ItemSet(String title) {
-		super();
-		this.setTitle(title);
-		this.setItems(new ArrayList<Item>());
-	}
-	
-	public ItemSet(String title, List<Item> items) {
-		super();
-		this.setTitle(title);
-		this.setItems(items);
 	}
 
 	/**
@@ -82,6 +70,23 @@ public class ItemSet {
 	 */
 	public void removeItem(Item item){
 		this.items.remove(item);
+	}
+	
+	/**
+	 * Gets the sum of all the numbers value of item set items
+	 * 
+	 * @return The sum of the numbers
+	 */
+	public Integer getItemsNumberSum(){
+		List<Item> items = getItems();
+		
+		int sum = 0;
+		
+		for(Item i : items){
+			sum += (int) i.getNumber();
+		}
+		
+		return sum;
 	}
 
 }

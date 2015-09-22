@@ -15,7 +15,13 @@ public class Item {
 	 * @var number The item number
 	 */
 	private Integer number;
-	
+		
+	public Item(String title, String description, Integer number) {
+		super();
+		this.title = title;
+		this.description = description;
+		this.number = number;
+	}
 	/**
 	 * @return the title
 	 */
