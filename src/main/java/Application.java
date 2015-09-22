@@ -1,7 +1,5 @@
 import javax.swing.JFrame;
 
-import view.Camembert;
-
 import controller.IController;
 import controller.StatisticsController;
 
