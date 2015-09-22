@@ -10,6 +10,7 @@ public class ItemSetData {
 		items.add(new Item("Budget","",350));
 		items.add(new Item("Mobile","",200));
 		items.add(new Item("Loyer","",502));
+		
 		return items;
 	}
 }
