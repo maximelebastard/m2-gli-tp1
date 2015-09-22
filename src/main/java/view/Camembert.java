@@ -56,7 +56,9 @@ public class Camembert extends JComponent implements Observer{
 	
 	private void constructDiagram(){
 		List<Item> items = model.getItems();
-		
+		for(Item i :items){
+			
+		}
 	}
 
 	public void update(Observable o, Object arg) {

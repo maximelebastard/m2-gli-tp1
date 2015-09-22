@@ -9,7 +9,7 @@ public class ItemSetAdapter extends Observable implements IItemsModels{
 	
 	public ItemSetAdapter(){
 		super();
-		ite
+		itemSet.setItems(ItemSetData.generateItem());
 	}
 	
 	public ItemSetAdapter(String title){
