@@ -17,6 +17,7 @@ public class ItemSetAdapter extends ItemSet{
 	 */
 	public void addItem(Item item){
 		super.addItem(item);
+		observable.notifyObservers();
 	}
 	
 	/**
@@ -25,7 +26,7 @@ public class ItemSetAdapter extends ItemSet{
 	 */
 	public void removeItem(Item item){
 		super.removeItem(item);
-		observable.notifyObservers();
+		observable.notifyObservers();	
 	}
 
 

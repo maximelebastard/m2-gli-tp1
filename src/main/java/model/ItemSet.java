@@ -10,7 +10,7 @@ import java.util.List;
  * @author maxime
  *
  */
-public class ItemSet {
+public class ItemSet implements IModel{
 	
 	/**
 	 * @var title The itemset title
@@ -22,6 +22,7 @@ public class ItemSet {
 	 */
 	private List<Item> items;
 
+	
 	public ItemSet() {
 		super();
 	}
@@ -83,5 +84,5 @@ public class ItemSet {
 	public void removeItem(Item item){
 		this.items.remove(item);
 	}
-
+	
 }
