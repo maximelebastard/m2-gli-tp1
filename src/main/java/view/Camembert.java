@@ -29,12 +29,35 @@ public class Camembert extends JComponent implements Observer{
 		super.paintComponent(g);
 		
 		Dimension d = getSize();
-
+		
 		Graphics2D g2d = (Graphics2D) g;
-		Arc2D.Float cercle = new Arc2D.Float(Arc2D.PIE);
-		cercle.setFrame((d.getWidth()/2)-(RAYON_CERCLE/2), (d.getHeight()/2)-(RAYON_CERCLE/2), RAYON_CERCLE, RAYON_CERCLE);
-	    cercle.setAngleStart(0);
-	    cercle.setAngleExtent(380);
+		
+	    int begin = 0;
+	    int j=0;
+	    List<Item> items = model.getItems();
+	    int total = model.getItemsNumberSum();
+		for(Item i :items){
+			 j++;
+			Arc2D.Float cercle = new Arc2D.Float(Arc2D.PIE);
+			cercle.setFrame((d.getWidth()/2)-(RAYON_CERCLE/2), (d.getHeight()/2)-(RAYON_CERCLE/2), RAYON_CERCLE, RAYON_CERCLE);
+			cercle.setAngleStart(begin);
+			System.err.println(begin);
+			int valueAngl = begin + (int) ((i.getNumber()/(float)total) * 380);
+			System.err.println(valueAngl);
+			cercle.setAngleExtent(valueAngl);
+			begin=valueAngl;
+			if(j%2==0){
+				g2d.setColor(Color.red);
+				System.err.println("red");
+				g2d.fill(cercle);
+			}else{
+				g2d.setColor(Color.green);
+				System.err.println("green");
+				g2d.fill(cercle);
+			}
+			
+		}
+	    
 	    
 	    Arc2D.Float vide = new Arc2D.Float(Arc2D.PIE);
 	    vide.setFrame((d.getWidth()/2)-(RAYON_CERCLE/4), (d.getHeight()/2)-(RAYON_CERCLE/4), RAYON_CERCLE/2, RAYON_CERCLE/2);
@@ -46,19 +69,11 @@ public class Camembert extends JComponent implements Observer{
 	    info.setAngleStart(0);
 	    info.setAngleExtent(380);
 	    
-	    g2d.setColor(Color.red);
-		g2d.fill(cercle);
+	    
 		g2d.setColor(Color.white);
 		g2d.fill(vide);
 		g2d.setColor(Color.blue);
 		g2d.fill(info);
-	}
-	
-	private void constructDiagram(){
-		List<Item> items = model.getItems();
-		for(Item i :items){
-			
-		}
 	}
 
 	public void update(Observable o, Object arg) {
