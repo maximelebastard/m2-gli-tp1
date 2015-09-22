@@ -10,7 +10,7 @@ import java.util.List;
  * @author maxime
  *
  */
-public class ItemSet {
+public class ItemSet implements IModel{
 	
 	/**
 	 * @var title The itemset title
@@ -22,6 +22,7 @@ public class ItemSet {
 	 */
 	private List<Item> items = new ArrayList<Item>();
 
+	
 	public ItemSet() {
 		super();
 	}
@@ -88,5 +89,4 @@ public class ItemSet {
 		
 		return sum;
 	}
-
 }

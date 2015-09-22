@@ -1,6 +1,6 @@
 package model;
 
-public class Item {
+public class Item implements IModel{
 	/**
 	 * @var title The item title
 	 */
