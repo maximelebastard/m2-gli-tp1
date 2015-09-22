@@ -12,7 +12,7 @@ import java.util.Observer;
 
 import javax.swing.JComponent;
 
-import model.IModel;
+import model.IItemsModels;
 import model.Item;
 import model.ItemSetAdapter;
 
@@ -22,7 +22,7 @@ public class Camembert extends JComponent implements Observer{
 	
 	private static final int RAYON_CERCLE = 500;
 	
-	private IModel model = new ItemSetAdapter();
+	private IItemsModels model = new ItemSetAdapter();
 	
 	@Override
 	public void paintComponent(Graphics g){
@@ -55,8 +55,7 @@ public class Camembert extends JComponent implements Observer{
 	}
 	
 	private void constructDiagram(){
-		ItemSetAdapter itemSet = (ItemSetAdapter)model;
-		List<Item> items = itemSet.getItems();
+		List<Item> items = model.getItems();
 		
 	}
 

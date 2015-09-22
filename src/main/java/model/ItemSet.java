@@ -10,7 +10,7 @@ import java.util.List;
  * @author maxime
  *
  */
-public class ItemSet implements IModel{
+public class ItemSet{
 	
 	/**
 	 * @var title The itemset title

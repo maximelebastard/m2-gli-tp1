@@ -1,14 +1,15 @@
 package model;
 
+import java.util.List;
 import java.util.Observable;
-import java.util.Observer;
 
-public class ItemSetAdapter extends Observable{
+public class ItemSetAdapter extends Observable implements IItemsModels{
 	
 	private ItemSet itemSet = new ItemSet();
 	
 	public ItemSetAdapter(){
 		super();
+		ite
 	}
 	
 	public ItemSetAdapter(String title){
@@ -33,5 +34,13 @@ public class ItemSetAdapter extends Observable{
 	public void removeItem(Item item){
 		itemSet.removeItem(item);
 		notifyObservers();
+	}
+
+	public List<Item> getItems() {
+		return itemSet.getItems();
+	}
+
+	public int getItemsNumberSum() {
+		return itemSet.getItemsNumberSum();
 	}
 }
