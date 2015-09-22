@@ -3,9 +3,6 @@
  */
 package controller;
 
-import javax.swing.JFrame;
-
-import view.Camembert;
 import view.IView;
 import view.ViewCamembert;
 
