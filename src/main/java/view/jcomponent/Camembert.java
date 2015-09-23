@@ -27,7 +27,7 @@ import javax.swing.JPanel;
 import view.jcomponent.mouseListener.AssocitaionItemArc;
 import view.jcomponent.mouseListener.MouseListenerArc;
 
-import model.IItemsModels;
+import model.IItemListAdapter;
 import model.Item;
 import model.ItemSetAdapter;
 
@@ -37,8 +37,9 @@ public class Camembert extends JComponent implements Observer{
 	
 	private static final int RAYON_CERCLE = 450;
 	
-	private IItemsModels model;
+	private IItemListAdapter model;
 	private Item selectedItem;
+	private List<AssocitaionItemArc> associationsItemArc = new ArrayList<AssocitaionItemArc>();
 	
 	public Camembert(){
 		super();
@@ -57,11 +58,11 @@ public class Camembert extends JComponent implements Observer{
 	    
 	    final List<Item> items = model.getItems();
 	    int total = model.getItemsNumberSum();
-	    List<AssocitaionItemArc> associations = new ArrayList<AssocitaionItemArc>();
+	   
 	    //for each item, we process the part that it take on the Camembert
 		for(int i = 0;i<items.size();i++){
 			final Arc2D.Float arc = new Arc2D.Float(Arc2D.PIE); 
-			associations.add(new AssocitaionItemArc(items.get(i), arc));
+			associationsItemArc.add(new AssocitaionItemArc(items.get(i), arc));
 			arc.setFrame((d.getWidth()/2)-(RAYON_CERCLE/2), (d.getHeight()/2)-(RAYON_CERCLE/2), RAYON_CERCLE, RAYON_CERCLE);
 			//begin angle
 			arc.setAngleStart(begin);
@@ -102,7 +103,7 @@ public class Camembert extends JComponent implements Observer{
 		g2d.setColor(Color.blue);
 		g2d.fill(info);
 		
-		addMouseListener(new MouseListenerArc(associations,vide,this));
+		addMouseListener(new MouseListenerArc(associationsItemArc,vide,this));
 
 		g2d.setColor(Color.black);
 		if(selectedItem!=null){

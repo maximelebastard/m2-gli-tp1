@@ -3,7 +3,7 @@ package model;
 import java.util.List;
 import java.util.Observable;
 
-public class ItemSetAdapter extends Observable implements IItemsModels{
+public class ItemSetAdapter extends Observable implements IItemListAdapter{
 	
 	private ItemSet itemSet = new ItemSet();
 	

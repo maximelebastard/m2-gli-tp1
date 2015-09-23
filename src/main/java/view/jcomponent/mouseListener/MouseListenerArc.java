@@ -28,6 +28,7 @@ public class MouseListenerArc implements MouseListener {
 				if (a.getArc().contains(e.getPoint())) {
 					camembert.setSelectedItem(a.getItem());
 					camembert.repaint();
+					return;
 				}
 			}
 		}
