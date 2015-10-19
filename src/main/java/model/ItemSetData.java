@@ -10,26 +10,6 @@ public class ItemSetData {
 		items.add(new Item("Budget","",10));
 		items.add(new Item("Mobile","",1));
 		items.add(new Item("Loyer","",1));
-		items.add(new Item("Loyer","",1));
-		items.add(new Item("Loyer","",1));
-		items.add(new Item("Loyer","",1));
-		items.add(new Item("Loyer","",1));
-		items.add(new Item("Loyer","",1));
-		items.add(new Item("Loyer","",1));
-		items.add(new Item("Loyer","",1));
-		items.add(new Item("Loyer","",1));
-		items.add(new Item("Loyer","",1));
-		items.add(new Item("Loyer","",1));
-		items.add(new Item("Loyer","",1));
-		items.add(new Item("Loyer","",1));
-		items.add(new Item("Loyer","",1));
-		items.add(new Item("Loyer","",1));
-		items.add(new Item("Loyer","",1));
-		items.add(new Item("Loyer","",1));
-		items.add(new Item("Loyer","",1));
-		items.add(new Item("Loyer","",1));
-		items.add(new Item("Loyer","",1));
-		items.add(new Item("Loyer","",1));
 		
 		return items;
 	}

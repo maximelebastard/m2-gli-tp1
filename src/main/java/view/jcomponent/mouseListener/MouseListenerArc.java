@@ -1,6 +1,5 @@
 package view.jcomponent.mouseListener;
 
-import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Arc2D;
@@ -8,7 +7,6 @@ import java.util.List;
 
 import view.jcomponent.Camembert;
 
-import model.Item;
 
 public class MouseListenerArc implements MouseListener {
 
@@ -28,6 +26,7 @@ public class MouseListenerArc implements MouseListener {
 				if (a.getArc().contains(e.getPoint())) {
 					camembert.setSelectedItem(a.getItem());
 					camembert.repaint();
+					
 					return;
 				}
 			}
@@ -45,8 +44,7 @@ public class MouseListenerArc implements MouseListener {
 	}
 
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	public void mouseExited(MouseEvent e) {
