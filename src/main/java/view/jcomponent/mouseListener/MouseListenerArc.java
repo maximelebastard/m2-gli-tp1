@@ -5,26 +5,37 @@ import java.awt.event.MouseListener;
 import java.awt.geom.Arc2D;
 import java.util.List;
 
+import view.jcomponent.Arc2DItemFloat;
 import view.jcomponent.Camembert;
 
 
 public class MouseListenerArc implements MouseListener {
-
-	private List<AssocitaionItemArc> values;
+	
+	/**
+	 * The empty circle (white mask)
+	 */
 	private Arc2D vide;
+	
+	/**
+	 * The camembert graph (with its arcs)
+	 */
 	private Camembert camembert;
 
-	public MouseListenerArc(List<AssocitaionItemArc> pValues, Arc2D pVide,Camembert pCamembert) {
-		values = pValues;
+	public MouseListenerArc(Arc2D pVide,Camembert pCamembert) {
 		vide = pVide;
 		camembert=pCamembert;
 	}
 
 	public void mouseClicked(MouseEvent e) {
+		// Check that we are not in the white mask
 		if (!vide.contains(e.getPoint())) {
-			for (AssocitaionItemArc a : values) {
-				if (a.getArc().contains(e.getPoint())) {
-					camembert.setSelectedItem(a.getItem());
+			
+			// For all the arcs, check if the point is in one of them
+			for(Arc2DItemFloat arc : camembert.getArcs()) {
+				
+				// If the arc is on the selected point
+				if(arc.contains(e.getPoint())) {
+					camembert.setSelectedItem(arc.getItem());
 					camembert.repaint();
 					
 					return;

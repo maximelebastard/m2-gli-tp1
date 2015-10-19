@@ -3,8 +3,11 @@
  */
 package controller;
 
+import javax.swing.JComponent;
+
 import view.IView;
 import view.ViewCamembert;
+import view.jcomponent.Camembert;
 
 /**
  * @author maxime
@@ -12,8 +15,8 @@ import view.ViewCamembert;
  */
 public class StatisticsController implements IController {
 
-	public IView getView() {
-		return new ViewCamembert();
+	public JComponent getView() {
+		return new Camembert();
 	}
 
 }

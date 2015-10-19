@@ -3,6 +3,8 @@
  */
 package controller;
 
+import javax.swing.JComponent;
+
 import view.IView;
 
 
@@ -11,5 +13,5 @@ import view.IView;
  *
  */
 public interface IController {
-	public IView getView();
+	public JComponent getView();
 }

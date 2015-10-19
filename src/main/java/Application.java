@@ -22,7 +22,7 @@ public class Application {
 
 		JFrame frame = new JFrame();
 		frame.setSize(800, 600);
-		frame.add(appController.getView().getJComponent());
+		frame.add(appController.getView());
 		frame.setVisible(true);
 
 	}

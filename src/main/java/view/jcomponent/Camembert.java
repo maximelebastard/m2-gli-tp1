@@ -32,7 +32,7 @@ public class Camembert extends JComponent implements Observer {
 	private IItemListAdapter model;
 	private Item selectedItem;
 	private Item itemHover;
-	private List<AssocitaionItemArc> associationsItemArc = new ArrayList<AssocitaionItemArc>();
+	private List<Arc2DItemFloat> arcs = new ArrayList<Arc2DItemFloat>();
 
 	public Camembert() {
 		super();
@@ -58,15 +58,23 @@ public class Camembert extends JComponent implements Observer {
 
 		// for each item, we process the part that it take on the Camembert
 		for (int i = 0; i < items.size(); i++) {
-			final Arc2D.Float arc = new Arc2D.Float(Arc2D.PIE);
-			associationsItemArc.add(new AssocitaionItemArc(items.get(i), arc));
-			if (items.get(i) == itemHover) {
+			
+			//final Arc2D.Float arc = new Arc2D.Float(Arc2D.PIE);
+			
+			// Create the arc and affect the right item
+			final Arc2DItemFloat arc = new Arc2DItemFloat(Arc2D.PIE);
+			arc.setItem(items.get(i));
+			
+			//associationsItemArc.add(new AssocitaionItemArc(items.get(i), arc));
+			arcs.add(arc);
+			if (items.get(i).equals(selectedItem)) {
 				arc.setFrame((d.getWidth() / 2) - rayonGrandCercle, (d.getHeight() / 2) - rayonGrandCercle, DIAMETER*3/2,
 						DIAMETER*3/2);
 			} else {
 				arc.setFrame((d.getWidth() / 2) - rayonGrandCercle, (d.getHeight() / 2) - rayonGrandCercle, DIAMETER,
 						DIAMETER);
 			}
+			
 			// begin angle
 			arc.setAngleStart(begin);
 			// extend angle
@@ -91,6 +99,7 @@ public class Camembert extends JComponent implements Observer {
 			double y = d.getHeight() / 2
 					- (rayonGrandCercle + 50) * Math.sin(Math.toRadians(arc.getAngleStart() + valueAngl / 2));
 
+			// Draw the label
 			Point2D.Double point = new Point2D.Double(x, y);
 			g2d.setColor(colorPart);
 			Rectangle2D.Double rect = new Rectangle2D.Double(point.x - 40, point.y - 25, 80, 50);
@@ -114,7 +123,7 @@ public class Camembert extends JComponent implements Observer {
 		g2d.fill(ellipseInfo);
 
 		// when we click on a part of the camembert, we have some info
-		addMouseListener(new MouseListenerArc(associationsItemArc, new Arc2D.Double(), this));
+		addMouseListener(new MouseListenerArc(new Arc2D.Double(), this));
 
 		// the selected Item is displayed in the info circle
 		g2d.setColor(Color.black);
@@ -153,4 +162,13 @@ public class Camembert extends JComponent implements Observer {
 	public void setItemHover(Item pItemHover) {
 		itemHover = pItemHover;
 	}
+
+	/**
+	 * @return the arcs
+	 */
+	public List<Arc2DItemFloat> getArcs() {
+		return arcs;
+	}
+	
+	
 }
