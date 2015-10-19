@@ -23,12 +23,12 @@ import model.IItemListAdapter;
 import model.Item;
 import model.ItemSetAdapter;
 
-public class Camembert extends JComponent implements Observer {
+public class Camembert extends JComponent implements Observer{
 
 	private static final long serialVersionUID = 1L;
-
-	public static final int DIAMETER = 450;
-
+	
+	private static final int DIAMETER = 450;
+	
 	private IItemListAdapter model;
 	private Item selectedItem;
 	private Item itemHover;
@@ -36,19 +36,19 @@ public class Camembert extends JComponent implements Observer {
 
 	public Camembert() {
 		super();
-		model = new ItemSetAdapter();
+		 model = new ItemSetAdapter();
 	}
-
+	
 	@Override
-	public void paintComponent(Graphics g) {
+	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-
-		final int rayonGrandCercle = DIAMETER / 2;
-		final int rayonCercleVide = DIAMETER / 4;
-		final int rayonCercleCentral = DIAMETER / 8;
-
+		
+		final int rayonGrandCercle = DIAMETER/2;
+		final int rayonCercleVide = DIAMETER/4;
+		final int rayonCercleCentral= DIAMETER/8;
+		
 		Dimension d = getSize();
-
+		
 		Graphics2D g2d = (Graphics2D) g;
 
 		float begin = 0;
@@ -77,11 +77,11 @@ public class Camembert extends JComponent implements Observer {
 			
 			// begin angle
 			arc.setAngleStart(begin);
-			// extend angle
-			float valueAngl = (items.get(i).getNumber() * 360) / (float) total;
+			//extend angle
+			float valueAngl = (items.get(i).getNumber()*360)/(float)total;
 			arc.setAngleExtent(valueAngl);
 			Color colorPart = generateColor(i);
-			// set color
+			//set color 
 			g2d.setColor(colorPart);
 			g2d.fill(arc);
 			// creation line for separate part
@@ -105,20 +105,19 @@ public class Camembert extends JComponent implements Observer {
 			Rectangle2D.Double rect = new Rectangle2D.Double(point.x - 40, point.y - 25, 80, 50);
 		
 			g2d.draw(rect);
-			g2d.drawString(items.get(i).getTitle(), (int) point.x - 20, (int) point.y - 10);
-
-			begin += valueAngl;
+			g2d.drawString(items.get(i).getTitle(),(int) point.x -20,(int) point.y -10);
+			
+			begin+=valueAngl;
 		}
-
-		// creation void circle
-		Ellipse2D ellipseVoid = new Ellipse2D.Double(d.getWidth() / 2 - rayonCercleVide,
-				d.getHeight() / 2 - rayonCercleVide, rayonGrandCercle, rayonGrandCercle);
+		
+	    
+	   //creation void circle
+		Ellipse2D ellipseVoid = new Ellipse2D.Double(d.getWidth()/2-rayonCercleVide, d.getHeight()/2 - rayonCercleVide, rayonGrandCercle, rayonGrandCercle);
 		g2d.setColor(Color.white);
 		g2d.fill(ellipseVoid);
-
-		// creation info circle
-		Ellipse2D ellipseInfo = new Ellipse2D.Double(d.getWidth() / 2 - rayonCercleCentral,
-				d.getHeight() / 2 - rayonCercleCentral, rayonCercleVide, rayonCercleVide);
+		
+	    //creation info circle
+		Ellipse2D ellipseInfo = new Ellipse2D.Double(d.getWidth()/2-rayonCercleCentral, d.getHeight()/2 - rayonCercleCentral, rayonCercleVide, rayonCercleVide);
 		g2d.setColor(Color.blue);
 		g2d.fill(ellipseInfo);
 
@@ -127,32 +126,28 @@ public class Camembert extends JComponent implements Observer {
 
 		// the selected Item is displayed in the info circle
 		g2d.setColor(Color.black);
-		if (selectedItem != null) {
+		if(selectedItem!=null){
 			g2d.setColor(Color.white);
-			g2d.drawString(selectedItem.getTitle(), (int) (d.getWidth() / 2) - DIAMETER / 16,
-					(int) (d.getHeight() / 2) - DIAMETER / 16);
-			g2d.drawString(selectedItem.getNumber().toString(), (int) (d.getWidth() / 2) - DIAMETER / 64,
-					(int) d.getHeight() / 2);
+			g2d.drawString(selectedItem.getTitle(),(int)( d.getWidth()/2)-DIAMETER/16, (int)(d.getHeight()/2)-DIAMETER/16);
+			g2d.drawString(selectedItem.getNumber().toString(),(int)( d.getWidth()/2)-DIAMETER/64, (int)d.getHeight()/2);
 		}
 	}
-
+	
 	public void update(Observable o, Object arg) {
-
+		
 	}
-
+	
 	/**
 	 * génération d'une couleur à partir d'un entier.
-	 * 
-	 * @param i
-	 *            : entier de départ permetant de générer une valeur
-	 * @return une couleur
+	 * @param i : entier de départ permetant de générer une valeur
+	 * @return une couleur 
 	 */
-	private Color generateColor(int i) {
+	private Color generateColor(int i){
 		int val = ((i * 6666666) + 666667) % (16581375);
-		int r = (val / 65025) % 255;
-		int v = (val / 255) % 255;
+		int r = (val/65025) % 255;
+		int v = (val/255) % 255;
 		int b = val % 255;
-		return new Color(r, v, b);
+		return new Color(r,v,b);
 	}
 
 	public void setSelectedItem(Item selectedItem) {
@@ -169,6 +164,5 @@ public class Camembert extends JComponent implements Observer {
 	public List<Arc2DItemFloat> getArcs() {
 		return arcs;
 	}
-	
 	
 }
