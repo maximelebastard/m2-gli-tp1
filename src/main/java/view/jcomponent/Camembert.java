@@ -2,6 +2,7 @@ package view.jcomponent;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Arc2D;
@@ -15,6 +16,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JComponent;
+import javax.swing.text.StyledEditorKit.FontSizeAction;
 
 import view.jcomponent.mouseListener.AssocitaionItemArc;
 import view.jcomponent.mouseListener.MouseListenerArc;
@@ -50,6 +52,8 @@ public class Camembert extends JComponent implements Observer{
 		Dimension d = getSize();
 		
 		Graphics2D g2d = (Graphics2D) g;
+		
+		g2d.setFont(new Font("Arial", 0, 20));
 
 		float begin = 0;
 
@@ -130,6 +134,13 @@ public class Camembert extends JComponent implements Observer{
 			g2d.setColor(Color.white);
 			g2d.drawString(selectedItem.getTitle(),(int)( d.getWidth()/2)-DIAMETER/16, (int)(d.getHeight()/2)-DIAMETER/16);
 			g2d.drawString(selectedItem.getNumber().toString(),(int)( d.getWidth()/2)-DIAMETER/64, (int)d.getHeight()/2);
+		}
+		
+		// Next and previous buttons
+		if(selectedItem!=null) {
+			g2d.setColor(Color.black);
+			g2d.setFont(new Font("Arial", 0, 30));
+			g2d.drawString(">>", (int) (d.getWidth()/2+20), (int) (d.getHeight()/2+30) );
 		}
 	}
 	
