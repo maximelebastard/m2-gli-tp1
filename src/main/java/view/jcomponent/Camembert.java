@@ -13,10 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
-
 import javax.swing.JComponent;
-
-import view.jcomponent.mouseListener.AssocitaionItemArc;
 import view.jcomponent.mouseListener.MouseListenerArc;
 
 import model.IItemListAdapter;
@@ -31,7 +28,6 @@ public class Camembert extends JComponent implements Observer{
 	
 	private IItemListAdapter model;
 	private Item selectedItem;
-	private Item itemHover;
 	private List<Arc2DItemFloat> arcs = new ArrayList<Arc2DItemFloat>();
 
 	public Camembert() {
@@ -57,19 +53,16 @@ public class Camembert extends JComponent implements Observer{
 		int total = model.getItemsNumberSum();
 
 		// for each item, we process the part that it take on the Camembert
-		for (int i = 0; i < items.size(); i++) {
-			
-			//final Arc2D.Float arc = new Arc2D.Float(Arc2D.PIE);
-			
+		for (int i = 0; i < items.size(); i++) {			
 			// Create the arc and affect the right item
 			final Arc2DItemFloat arc = new Arc2DItemFloat(Arc2D.PIE);
 			arc.setItem(items.get(i));
 			
 			//associationsItemArc.add(new AssocitaionItemArc(items.get(i), arc));
 			arcs.add(arc);
-			if (items.get(i).equals(selectedItem)) {
-				arc.setFrame((d.getWidth() / 2) - rayonGrandCercle, (d.getHeight() / 2) - rayonGrandCercle, DIAMETER*3/2,
-						DIAMETER*3/2);
+			if (items.get(i)==selectedItem) {
+				arc.setFrame((d.getWidth() / 2) - rayonGrandCercle-10, (d.getHeight() / 2) - rayonGrandCercle-10, DIAMETER+20,
+						DIAMETER+20);
 			} else {
 				arc.setFrame((d.getWidth() / 2) - rayonGrandCercle, (d.getHeight() / 2) - rayonGrandCercle, DIAMETER,
 						DIAMETER);
@@ -84,20 +77,12 @@ public class Camembert extends JComponent implements Observer{
 			//set color 
 			g2d.setColor(colorPart);
 			g2d.fill(arc);
-			// creation line for separate part
-			// Line2D.Float line = new Line2D.Float();
-			// line.setLine(arc.getEndPoint(), new
-			// Point2D.Double(d.getWidth()/2,d.getHeight()/2));
-			// //increase thickness of the line
-			// g2d.setStroke(new BasicStroke(5));
-			// g2d.setColor(Color.white);
-			// g2d.draw(line);
 
 			// creation rectangle to display part name
 			double x = d.getWidth() / 2
-					+ (rayonGrandCercle + 50) * Math.cos(Math.toRadians(arc.getAngleStart() + valueAngl / 2));
+					+ (rayonGrandCercle + 55) * Math.cos(Math.toRadians(arc.getAngleStart() + valueAngl / 2));
 			double y = d.getHeight() / 2
-					- (rayonGrandCercle + 50) * Math.sin(Math.toRadians(arc.getAngleStart() + valueAngl / 2));
+					- (rayonGrandCercle + 55) * Math.sin(Math.toRadians(arc.getAngleStart() + valueAngl / 2));
 
 			// Draw the label
 			Point2D.Double point = new Point2D.Double(x, y);
@@ -152,10 +137,6 @@ public class Camembert extends JComponent implements Observer{
 
 	public void setSelectedItem(Item selectedItem) {
 		this.selectedItem = selectedItem;
-	}
-
-	public void setItemHover(Item pItemHover) {
-		itemHover = pItemHover;
 	}
 
 	/**
