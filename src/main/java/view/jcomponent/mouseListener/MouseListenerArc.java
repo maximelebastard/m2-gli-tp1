@@ -3,7 +3,6 @@ package view.jcomponent.mouseListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Arc2D;
-import java.util.List;
 
 import view.jcomponent.Arc2DItemFloat;
 import view.jcomponent.Camembert;
