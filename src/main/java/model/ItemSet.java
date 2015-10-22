@@ -10,19 +10,18 @@ import java.util.List;
  * @author maxime
  *
  */
-public class ItemSet{
-	
+public class ItemSet {
+
 	/**
 	 * @var title The itemset title
 	 */
 	private String title;
-	
+
 	/**
 	 * @var items Items of the itemset
 	 */
 	private List<Item> items = new ArrayList<Item>();
 
-	
 	public ItemSet() {
 		super();
 	}
@@ -35,7 +34,8 @@ public class ItemSet{
 	}
 
 	/**
-	 * @param title the title to set
+	 * @param title
+	 *            the title to set
 	 */
 	public void setTitle(String title) {
 		this.title = title;
@@ -49,44 +49,40 @@ public class ItemSet{
 	}
 
 	/**
-	 * @param items the items to set
+	 * @param items
+	 *            the items to set
 	 */
 	public void setItems(List<Item> items) {
 		this.items = items;
 	}
-	
+
 	/**
 	 * Adds a new item in the set
 	 * 
-	 * @param item The item to add
+	 * @param item
+	 *            The item to add
 	 */
-	public void addItem(Item item){
+	public void addItem(Item item) {
 		this.items.add(item);
 	}
-	
-	/**
-	 * Removes an item from the set
-	 * 
-	 * @param item The item to remove
-	 */
-	public void removeItem(Item item){
-		this.items.remove(item);
-	}
-	
+
 	/**
 	 * Gets the sum of all the numbers value of item set items
 	 * 
 	 * @return The sum of the numbers
 	 */
-	public Integer getItemsNumberSum(){
+	public Integer getItemsNumberSum() {
 		List<Item> items = getItems();
-		
+
 		int sum = 0;
-		
-		for(Item i : items){
-			sum += (int) i.getNumber();
+
+		for (Item i : items) {
+			// if the user have entered a value for this item
+			if (i.getNumber() != null && i.getTitle()!=null) {
+				sum += (int) i.getNumber();
+			}
 		}
-		
+
 		return sum;
 	}
 }

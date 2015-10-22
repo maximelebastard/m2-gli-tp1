@@ -11,30 +11,37 @@ import view.jcomponent.Camembert;
 public class MouseListenerArc implements MouseListener {
 	
 	/**
-	 * The empty circle (white mask)
-	 */
-	private Arc2D vide;
-	
-	/**
 	 * The camembert graph (with its arcs)
 	 */
 	private Camembert camembert;
 
-	public MouseListenerArc(Arc2D pVide,Camembert pCamembert) {
-		vide = pVide;
+	public MouseListenerArc(Camembert pCamembert) {
 		camembert=pCamembert;
 	}
 
 	public void mouseClicked(MouseEvent e) {
 		// Check that we are not in the white mask
-		if (!vide.contains(e.getPoint())) {
+		if (!camembert.getEllipseVoid().contains(e.getPoint())) {
+			
+			if(camembert.getRectangle2dNext().contains(e.getPoint()) && camembert.getSelectedIndex() != null){
+				camembert.setSelectedIndex(camembert.getSelectedIndex()+1);
+				camembert.repaint();
+				return;
+			}
+			
+			if(camembert.getRectangle2dPrev().contains(e.getPoint()) && camembert.getSelectedIndex() != null){
+				camembert.setSelectedIndex(camembert.getSelectedIndex()-1);
+				camembert.repaint();
+				return;
+			}
+			
 			
 			// For all the arcs, check if the point is in one of them
-			for(Arc2DItemFloat arc : camembert.getArcs()) {
+			for(int i=0;i<camembert.getArcs().size();i++) {
 				
 				// If the arc is on the selected point
-				if(arc.contains(e.getPoint())) {
-					camembert.setSelectedItem(arc.getItem());
+				if(camembert.getArcs().get(i).contains(e.getPoint())) {
+					camembert.setSelectedIndex(i);
 					camembert.repaint();
 					
 					return;

@@ -1,7 +1,10 @@
 package view;
 
+import java.awt.Container;
+import java.util.List;
+
 import javax.swing.JComponent;
 
 public interface IView {
-	public JComponent getJComponent();
+	void getJComponents(Container container);
 }

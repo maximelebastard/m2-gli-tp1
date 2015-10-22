@@ -3,20 +3,22 @@
  */
 package controller;
 
-import javax.swing.JComponent;
-
+import model.IItemListAdapter;
+import model.ItemSetAdapter;
 import view.IView;
 import view.ViewCamembert;
-import view.jcomponent.Camembert;
 
 /**
  * @author maxime
  *
  */
 public class StatisticsController implements IController {
-
-	public JComponent getView() {
-		return new Camembert();
+	
+	public IView getView() {
+		IItemListAdapter model = new ItemSetAdapter();
+		ViewCamembert view = new ViewCamembert(model);
+		model.addObserver(view);
+		return view;
 	}
 
 }

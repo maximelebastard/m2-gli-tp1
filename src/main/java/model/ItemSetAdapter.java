@@ -23,17 +23,6 @@ public class ItemSetAdapter extends Observable implements IItemListAdapter{
 	 */
 	public void addItem(Item item){
 		itemSet.addItem(item);
-		setChanged();
-		notifyObservers();
-	}
-	
-	/**
-	 * Method to remove item and to notify observers
-	 * @param item : item to remove
-	 */
-	public void removeItem(Item item){
-		itemSet.removeItem(item);
-		notifyObservers();
 	}
 
 	public List<Item> getItems() {
@@ -42,5 +31,9 @@ public class ItemSetAdapter extends Observable implements IItemListAdapter{
 
 	public int getItemsNumberSum() {
 		return itemSet.getItemsNumberSum();
+	}
+
+	public void newSetChanged() {
+		setChanged();
 	}
 }
