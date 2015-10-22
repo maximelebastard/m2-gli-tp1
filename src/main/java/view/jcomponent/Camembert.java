@@ -2,6 +2,7 @@ package view.jcomponent;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Arc2D;
@@ -11,10 +12,6 @@ import java.awt.geom.Rectangle2D;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
-
-import javax.swing.JButton;
 import javax.swing.JComponent;
 import view.jcomponent.mouseListener.MouseListenerArc;
 
@@ -145,7 +142,6 @@ public class Camembert extends JComponent {
 			g2d.drawString(items.get(selectedIndex).getNumber().toString(), (int) (d.getWidth() / 2) - DIAMETER / 64,
 					(int) d.getHeight() / 2);
 		}
-		
 	}
 
 	/**
