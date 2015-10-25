@@ -1,5 +1,11 @@
 package model;
 
+/**
+ * A graph item
+ * 
+ * @author maxime
+ *
+ */
 public class Item {
 	/**
 	 * @var title The item title

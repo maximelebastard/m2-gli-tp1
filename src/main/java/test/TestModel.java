@@ -10,6 +10,8 @@ import model.ItemSetAdapter;
 import org.junit.Test;
 
 /**
+ * Tests the model
+ * 
  * @author maxime
  *
  */

@@ -18,27 +18,68 @@ import view.jcomponent.mouseListener.MouseListenerArc;
 import model.IItemListAdapter;
 import model.Item;
 
+/**
+ * A camembert JComponent view
+ * @author maxime
+ *
+ */
 public class Camembert extends JComponent {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Diameter of the camembert in pixels
+	 */
 	private static final int DIAMETER = 450;
 
+	/**
+	 * The model
+	 */
 	private IItemListAdapter model;
+	
+	/**
+	 * The index currently selected (and highlighted)
+	 */
 	private Integer selectedIndex;
+	
+	/**
+	 * The list of the arcs that compose the camembert
+	 */
 	private List<Arc2DItemFloat> arcs;
+	
+	/**
+	 * The previous button
+	 */
 	private Rectangle2D.Double rectangle2dPrev ;
+	
+	/**
+	 * The next button
+	 */
 	private Rectangle2D.Double rectangle2dNext;
+	
+	/**
+	 * The elipse that hides the center of the camembert and makes the donut effect
+	 */
 	private Ellipse2D ellipseVoid;
 	
+	/**
+	 * @return Rectangle2D.Double The prev button
+	 */
 	public Rectangle2D.Double getRectangle2dPrev() {
 		return rectangle2dPrev;
 	}
 
+	/**
+	 * @return Rectangle2D.Double The next button
+	 */
 	public Rectangle2D.Double getRectangle2dNext() {
 		return rectangle2dNext;
 	}
 
+	/**
+	 * Constructs a camembert with its model
+	 * @param pModel
+	 */
 	public Camembert(IItemListAdapter pModel) {
 		super();
 		model = pModel;
@@ -47,6 +88,9 @@ public class Camembert extends JComponent {
 		addMouseListener(new MouseListenerArc(this));
 	}
 
+	/**
+	 * Paints the camembert
+	 */
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -145,11 +189,10 @@ public class Camembert extends JComponent {
 	}
 
 	/**
-	 * génération d'une couleur à partir d'un entier.
+	 * Generates a color from an integer
 	 * 
-	 * @param i
-	 *            : entier de départ permetant de générer une valeur
-	 * @return une couleur
+	 * @param i int Starting integer allowing to generate a color value
+	 * @return Color The color corresponding to the input integer
 	 */
 	private Color generateColor(int i) {
 		int val = ((i * 6666666) + 666667) % (16581375);
@@ -159,6 +202,10 @@ public class Camembert extends JComponent {
 		return new Color(r, v, b);
 	}
 
+	/**
+	 * Sets the selected index
+	 * @param selectedIndex
+	 */
 	public void setSelectedIndex(Integer selectedIndex) {
 		this.selectedIndex = selectedIndex % model.getItems().size();
 		if(this.selectedIndex<0){
@@ -166,17 +213,23 @@ public class Camembert extends JComponent {
 		}
 	}
 
+	/**
+	 * @return Integer selectedIndex
+	 */
 	public Integer getSelectedIndex() {
 		return selectedIndex;
 	}
 
 	/**
-	 * @return the arcs
+	 * @return List<Arc2DItemFloat> The arcs
 	 */
 	public List<Arc2DItemFloat> getArcs() {
 		return arcs;
 	}
 	
+	/**
+	 * @return Ellipse2D The ellipseVoid
+	 */
 	public Ellipse2D getEllipseVoid(){
 		return ellipseVoid;
 	}

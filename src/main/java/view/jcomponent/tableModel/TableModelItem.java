@@ -5,24 +5,45 @@ import javax.swing.table.AbstractTableModel;
 import model.IItemListAdapter;
 import model.Item;
 
+/**
+ * An Table items model
+ * @author romain
+ *
+ */
 public class TableModelItem extends AbstractTableModel {
 
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * The model to represent
+	 */
 	private IItemListAdapter model;
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public TableModelItem(IItemListAdapter pModel) {
 		super();
 		model = pModel;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public int getRowCount() {
 		return model.getItems().size();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public int getColumnCount() {
 		return 3;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public void setValueAt(Object value, int row, int col) {
 		Item item = model.getItems().get(row);
 
@@ -49,6 +70,10 @@ public class TableModelItem extends AbstractTableModel {
 		model.notifyObservers();
 	}
 
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		Item item = model.getItems().get(rowIndex);
 		switch (columnIndex) {
@@ -62,11 +87,17 @@ public class TableModelItem extends AbstractTableModel {
 		return "";
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean isCellEditable(int row, int column) {
 		return true;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public void addRow() {
 		model.addItem(new Item());
 		this.fireTableRowsInserted(0, getRowCount());

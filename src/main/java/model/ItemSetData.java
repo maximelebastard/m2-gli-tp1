@@ -3,8 +3,18 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * An item set with data (for testing)
+ * 
+ * @author maxime
+ *
+ */
 public class ItemSetData {
 
+	/**
+	 * Generates a new Items list with data
+	 * @return List<Item>
+	 */
 	public static List<Item> generateItem(){
 		List<Item> items = new ArrayList<Item>();
 

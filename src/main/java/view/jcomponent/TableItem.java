@@ -15,12 +15,25 @@ import javax.swing.ScrollPaneConstants;
 import model.IItemListAdapter;
 import view.jcomponent.tableModel.TableModelItem;
 
+/**
+ * The items table
+ * 
+ * @author maxime
+ *
+ */
 public class TableItem extends Panel {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * The model to display in the table
+	 */
 	private TableModelItem tableModelItem;
 
+	/**
+	 * Constructs a table item
+	 * @param pModel The model to represent
+	 */
 	public TableItem(IItemListAdapter pModel) {
 		super();
 		tableModelItem = new TableModelItem(pModel);

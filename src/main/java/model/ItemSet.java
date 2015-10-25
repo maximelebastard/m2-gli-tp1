@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * A set of graph items
+ * 
  * @author maxime
  *
  */
